@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("token",response.token);
           localStorage.setItem("fullname",response.userData.fullName);
           console.log(response);
-          this.router.navigate(['searchTuits']);
+          this.router.navigate(['twitsSearch']);
         }else {
           this.status = false;
         }

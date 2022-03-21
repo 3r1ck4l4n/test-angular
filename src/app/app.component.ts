@@ -18,12 +18,16 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.fullname = localStorage.getItem("fullname");
+  
   }
 
   closeSession(): void{
     localStorage.removeItem("fullname");
     localStorage.removeItem("token");
-    this.router.navigate(['searchTuits']);
+    this.fullname = null;
+    this.router.navigate(['']);
+
   }
+
+
 }
