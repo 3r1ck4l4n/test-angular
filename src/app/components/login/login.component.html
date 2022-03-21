@@ -1,0 +1,34 @@
+<div class="container h-50 mx-auto">
+ <form class="form-shadow h-25 col-6 d-block  mx-auto bg-dark p-3 p-md-4 text-light rounded-3" #loginForm="ngForm" *ngIf="credentials" (ngSubmit)="submitCredentials(loginForm)">
+   <h6 class="text-center d-none d-md-block">You have an account?</h6>
+   <h2 class="text-primary my-3 text-center "> Sign in! </h2>
+
+   <div class="h-50">
+     <label class="form-label" for="fullName">User name or email</label>
+     <input class="form-control" name="fullName" id="fullName" type="text" #fullName="ngModel"
+            [(ngModel)]="credentials.user" required>
+     <span *ngIf="fullName.touched&& !fullName.valid" class="text-danger">Full name is required</span>
+   </div>
+
+   <div class="h-75">
+     <label class="form-label" for="password">Password</label>
+     <input class="form-control" type="password" name="password" id="password" [(ngModel)]="credentials.password"
+            #password="ngModel" required>
+     <span *ngIf="(password.touched&& !password.valid)" class="text-danger">Password is required</span>
+   </div>
+
+   <div class="h-75 g-recaptcha  my-3">
+     <re-captcha class="d-block"  [(ngModel)]="captchaToken" #recaptcha="ngModel" id="recaptcha" name="recaptcha" required > </re-captcha>
+   </div>
+   <div class="h-75">
+     <button type="submit" class="btn-primary mx-auto d-block mt-3 p-1 rounded-3"
+             [disabled]="!loginForm.form.valid||!captchaToken">Login
+     </button>
+   </div>
+
+   <div class="bg-danger" *ngIf="!status">
+     <p class="text-light">{{errorMessage}}</p>
+   </div>
+ </form>
+</div>
+

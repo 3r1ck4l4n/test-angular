@@ -1,0 +1,14 @@
+
+
+<div class="w-75 mx-auto bg-dark text-light rounded-3 p-2 my-2">
+  <div class="container-fluid d-flex flex-wrap">
+    <img class="rounded-circle d-block me-2" src="{{twitt.user.profile_image_url}}">
+    <a class="d-block mt-2 col-sm-12 col-md-7 text-decoration-none nameUser" href="{{twitt.user.url}}">{{twitt.user.name}}</a>
+  </div>
+  <p class="mx-auto ps-md-3"><small>{{twitt.created_at}}</small></p>
+  <p class="text-light px-2">{{twitt.text}}</p>
+  <div *ngIf="twitt.extended_entities" class=" img-container mx-auto">
+    <img class="img-thumbnail" src="{{twitt.extended_entities.media[0].media_url_https}}" alt="item twitter">
+  </div>
+</div>
+

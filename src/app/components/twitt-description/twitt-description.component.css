@@ -1,0 +1,13 @@
+.nameUser{
+  color: #0083EB !important ;
+}
+
+.img-container{
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.img-container img{
+  max-width: inherit;
+  max-height: inherit;
+}

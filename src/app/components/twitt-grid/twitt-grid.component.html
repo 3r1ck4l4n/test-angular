@@ -1,0 +1,22 @@
+<div *ngIf="userName!==null">
+  <h2 class="text-dark text-center mt-3">Welcome {{userName}}! </h2>
+
+  <div class="container w-50 bg-dark p-3 rounded-3">
+    <h6 class="text-light my-2"> Search Twitts <i class="bi bi-twitter "></i></h6>
+    <input type="text" class="form-control" [(ngModel)]="searchString" required>
+
+    <button class="btn-primary d-block mt-3" (click)="onClickSearch()" [disabled]="searchString==''">Buscar</button>
+  </div>
+
+
+  <div class="w-100 mx-auto mt-5">
+    <app-twitt-description *ngFor="let twitt of twittsFind" [twitt]="twitt">
+    </app-twitt-description>
+  </div>
+</div>
+
+<div *ngIf="userName==null">
+  <div class="bg-danger">
+    <p class="text-center text-light"> INICIE SESIÓN!</p>
+  </div>
+</div>

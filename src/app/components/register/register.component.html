@@ -1,0 +1,61 @@
+<div class="container h-50 mx-auto">
+
+  <form class="form-shadow h-25 col-6 d-block  mx-auto bg-dark p-3 p-md-4 text-light rounded-3" #registerForm="ngForm" *ngIf="user"
+        (ngSubmit)="onSubmit(registerForm)">
+    <h6 class="text-center d-none d-md-block">You do not have an account?</h6>
+    <h2 class="text-primary my-3 text-center "> Sign up! </h2>
+    <div class="h-50">
+      <label class="form-label" for="fullName">Full Name</label>
+      <input class="form-control" name="fullName" id="fullName" type="text" #fullName="ngModel"
+             [(ngModel)]="user.fullName" required>
+      <span *ngIf="fullName.touched&& !fullName.valid" class="text-danger">Full name is required</span>
+    </div>
+
+    <div class="h-75">
+      <label class="form-label" for="email">Email</label>
+      <input class="form-control" type="email" name="email" id="email" #email="ngModel" [(ngModel)]="user.email"
+             (change)="changeStatus()" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+      <span *ngIf="email.touched&& !email.valid" class="text-danger">Email is required</span>
+    </div>
+
+    <div class="h-75">
+      <label class="form-label" for="userName">User Name</label>
+      <input class="form-control" type="text" name="userName" id="userName" #userName="ngModel"
+             [(ngModel)]="user.userName" required (change)="changeStatus()">
+      <span *ngIf="userName.touched&& !userName.valid" class="text-danger">User Name is required</span>
+    </div>
+
+    <div class="h-75">
+      <label class="form-label" for="numberPhone">Number Phone</label>
+      <input class="form-control" type="number" name="numberPhone" id="numberPhone" [(ngModel)]="user.numberPhone"
+             #numberPhone="ngModel" required>
+      <span *ngIf="numberPhone.touched&& !numberPhone.valid" class="text-danger">Number Phone is required</span>
+    </div>
+
+    <div class="h-75">
+      <label class="form-label" for="password">Password</label>
+      <input class="form-control" type="password" name="password" id="password" [(ngModel)]="user.password"
+             #password="ngModel" required>
+      <span *ngIf="(password.touched&& !password.valid)" class="text-danger">Password is required</span>
+
+    </div>
+
+    <div class="h-75">
+      <label class="form-label" for="confirmPassword">Confirm Password</label>
+      <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+             (change)="confirmAssign($event)" required>
+      <span *ngIf="(!passwordConfirmation())" class="text-danger">Password and Confirm not equals</span>
+    </div>
+
+    <div class="h-75">
+      <button type="submit" class="btn-primary mx-auto d-block mt-3"
+              [disabled]="!passwordConfirmation()||!registerForm.form.valid">Register
+      </button>
+    </div>
+
+    <div class="bg-danger" *ngIf="!status">
+      <p>Username or email in use</p>
+    </div>
+  </form>
+
+</div>
